@@ -22,7 +22,7 @@ export function searchHighPower(car_data, minHorsepower, minTorque) {
     let result = [];
     for(let i = 0; i < car_data.length; i++){
         if(car_data[i].Horsepower >= minHorsepower && car_data[i].torque >= minTorque)
-        result.push[car_data[i]];
+        result.push(car_data[i]);
     }
   for(let i = 0; i < result.length;i++){
       for(let j = i+1; j <result.length;j++){
@@ -52,7 +52,7 @@ export function searchMpg(car_data, minCity, minHighway) {
  
     for(let i = 0; i < car_data.length; i++){
         if(car_data[i].city_mpg >= minCity && car_data[i].highway_mpg >= minHighway)
-        result.push[car_data[i]];
+        result.push(car_data[i]);
     }
 
     for(let i = 0; i < result.length;i++){
@@ -84,6 +84,7 @@ export function searchName(car_data, searchTerm) {
             res1.push(car_data[i]);
             offset.push(car_data[i].id.toLowerCase().indexOf(searchTerm.toLowerCase()));
         }
+    }
 
         for(let i = 0; i < result.length;i++){
             for(let j = i+1; j <result.length;j++){
@@ -96,7 +97,7 @@ export function searchName(car_data, searchTerm) {
         }
     return res1;
 }
-}
+
 
 
 /**
