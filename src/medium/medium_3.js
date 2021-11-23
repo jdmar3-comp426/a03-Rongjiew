@@ -1,3 +1,4 @@
+import { tenTimes } from "../spicy/spicy_9.js";
 import mpg_data from "./data/mpg_data.js";
 
 /*
@@ -23,7 +24,15 @@ export function searchHighPower(car_data, minHorsepower, minTorque) {
         if(car_data[i].Horsepower >= minHorsepower && car_data[i].torque >= minTorque)
         result.push[car_data[i]];
     }
-    result.sort(function(a, b){return b.horsepower-a.horsepower});
+  for(let i = 0; i < result.length;i++){
+      for(let j = i+1; j <result.length;j++){
+          if(result[i].Horsepower< result[j].Horsepower){
+              let temp = result[i];
+              result[i] = result[j];
+              result[j] = temp;
+          }
+      }
+  }
     return result;
 }
 
@@ -45,6 +54,16 @@ export function searchMpg(car_data, minCity, minHighway) {
         if(car_data[i].city_mpg >= minCity && car_data[i].highway_mpg >= minHighway)
         result.push[car_data[i]];
     }
+
+    for(let i = 0; i < result.length;i++){
+        for(let j = i+1; j <result.length;j++){
+            if(result[i].highway_mpg< result[j].highway_mpg){
+                let temp = result[i];
+                result[i] = result[j];
+                result[j] = temp;
+            }
+        }
+    }
     return result;
 }
 
@@ -65,8 +84,17 @@ export function searchName(car_data, searchTerm) {
             res1.push(car_data[i]);
             offset.push(car_data[i].id.toLowerCase().indexOf(searchTerm.toLowerCase()));
         }
-        
-    return res1.sort();
+
+        for(let i = 0; i < result.length;i++){
+            for(let j = i+1; j <result.length;j++){
+                if(offset[i]>offset[j]){
+                    let temp = result[i];
+                    result[i] = result[j];
+                    result[j] = temp;
+                }
+            }
+        }
+    return res1;
 }
 }
 
