@@ -57,7 +57,7 @@ export const allCarStats = {
             }
         }
         return count;
-    },
+    }
     
 };
 
@@ -120,56 +120,54 @@ export const allCarStats = {
  * }
  */
 export const moreStats = {
-    makerHybrids: function(array) {
-        const result = [];
-        const make_temp = [];
-        for (let i=0; i<array.length; i++) {
-            make_temp.push(array[i].make);
-        }
-        const ma = [... new Set(make_temp)];
-        for (let i=0; i<ma.length; i++) {
-            var make_string = ma[i];
-            const id_arr = [];
-            for (let j=0; j<array.length; j++) {
-                if (array[j].make == ma[i]) {
-                    id_arr.push(array[j].id);
-                }
-            }
-            result.push({make: make_string, hybrids: id_arr});
-        }
-        result.sort(function(a, b) {
-            return b.hybrids.length - a.hybrids.length;
-          });
-        return result;
-},
-        avgMpgByYearAndHybrid: function(array) {
-            const result = {};
-
-            const year_temp = [];
-            for (let i=0; i<array.length; i++) {
-                make_temp.push(array[i].year);
-            }
-            const ye = [... new Set(make_temp)];
-
-            for (let i=0; i<ye.length; i++) {
-                let year_num = ye[i];
-
-                const arr_hyb = [];
-                const arr_nonhyb = [];
-                for (let j=0; j<array.length; j++) {
-                    if (array[j].year == year_num && array[j].hybrid == true) {
-                        arr_hyb.push(array[j]);
-                    } else if (array[j].year == year_num) {
-                        arr_nonhyb.push(array[j]);
-                    }
-                }
-
-                let hybrid_avg = allCarStats.avgMpg(arr_hyb);
-                let notHybrid_avg = allCarStats.avgMpg(arr_nonhyb);
-
-                result[ye[i]] = {hybrid: hybrid_avg, notHybrid: notHybrid_avg};
-            }
-
-            return result;
-        }
+    makerHybrids: getmakerHybrids(mpg_data),
+    avgMpgByYearAndHybrid: getAvgMpgByYear(mpg_data)
 };
+
+
+export function getmakerHybrids(array) {
+    const result = [];
+    const make_temp = [];
+    for (let i=0; i<array.length; i++) {
+        make_temp.push(array[i].make);
+    }
+    const ma = [... new Set(make_temp)];
+    for (let i=0; i<ma.length; i++) {
+        var make_string = ma[i];
+        const id_arr = [];
+        for (let j=0; j<array.length; j++) {
+            if (array[j].make == ma[i]) {
+                id_arr.push(array[j].id);
+            }
+        }
+        result.push({make: make_string, hybrids: id_arr});
+    }
+    result.sort(function(a, b) {
+        return b.hybrids.length - a.hybrids.length;
+      });
+    return result;
+};
+export function getAvgMpgByYear(array) {
+    const result = {};
+    const year_temp = [];
+    for (let i=0; i<array.length; i++) {
+        make_temp.push(array[i].year);
+    }
+    const ye = [... new Set(make_temp)];
+    for (let i=0; i<ye.length; i++) {
+        let year_num = ye[i];
+        const arr_hyb = [];
+        const arr_nonhyb = [];
+        for (let j=0; j<array.length; j++) {
+            if (array[j].year == year_num && array[j].hybrid == true) {
+                arr_hyb.push(array[j]);
+            } else if (array[j].year == year_num) {
+                arr_nonhyb.push(array[j]);
+            }
+        }
+        let hybrid_avg = allCarStats.avgMpg(arr_hyb);
+        let notHybrid_avg = allCarStats.avgMpg(arr_nonhyb);
+        result[ye[i]] = {hybrid: hybrid_avg, notHybrid: notHybrid_avg};
+    }
+    return result;
+}
