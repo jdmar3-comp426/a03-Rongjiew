@@ -49,6 +49,7 @@ export function maxAndMin(numbers) {
         else if(numbers[i]< min){
         min = numbers[i];}
     }
+    return {max: parseInt(max),min: parseInt(min)};
 }
 
 /**
