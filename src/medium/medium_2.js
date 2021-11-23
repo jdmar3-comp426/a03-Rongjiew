@@ -168,8 +168,8 @@ export function getAvgMpgByYear(array) {
                 arr_nonhyb.push(array[j]);
             }
         }
-        let hybrid_avg = allCarStats.avgMpg(arr_hyb);
-        let notHybrid_avg = allCarStats.avgMpg(arr_nonhyb);
+        let hybrid_avg = avgMpg(arr_hyb);
+        let notHybrid_avg = avgMpg(arr_nonhyb);
         result[yeay[i]] = {hybrid: hybrid_avg, notHybrid: notHybrid_avg};
     }
     return result;
