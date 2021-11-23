@@ -40,7 +40,7 @@ export function searchHighPower(car_data, minHorsepower, minTorque) {
  */
 export function searchMpg(car_data, minCity, minHighway) {
     let result = [];
-    let result = [];
+ 
     for(let i = 0; i < car_data.length; i++){
         if(car_data[i].city_mpg >= minCity && car_data[i].highway_mpg >= minHighway)
         result.push[car_data[i]];
@@ -58,15 +58,15 @@ export function searchMpg(car_data, minCity, minHighway) {
  * @returns {[]} array of cars
  */
 export function searchName(car_data, searchTerm) {
-    let result = [];
+    let res1 = [];
     let offset = [];
     for(let i = 0; i < car_data.length; i++){
         if(car_data[i].id.toLowerCase().includes(searchTerm.toLowerCase())){
-            result.push(car_data[i]);
+            res1.push(car_data[i]);
             offset.push(car_data[i].id.toLowerCase().indexOf(searchTerm.toLowerCase()));
         }
         
-    return result.sort();
+    return res1.sort();
 }
 }
 

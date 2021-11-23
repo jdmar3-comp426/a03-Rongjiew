@@ -61,7 +61,7 @@ export function getYearStas(array) {
     }
 
     return getStatistics(year);
-}
+};
 
 
 
