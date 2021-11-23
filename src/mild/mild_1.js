@@ -24,7 +24,7 @@ export function sumToString(a, b) {
  *
  */
 export function getIncreasingArray(startNumber, endNumber) {
-    const result =[];
+    let result =[];
 
     for(i = startNumber; i<= endNumber;i++){
         result.push(i);
@@ -54,7 +54,7 @@ export function maxAndMin(numbers) {
  *
  */
 export function countArray(array) {
-    const result = {};
+    let result = {};
     array.forEach(function (x){
         result[x] = (result[x] || 0) + 1 
     });
