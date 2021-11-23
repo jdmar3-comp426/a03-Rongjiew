@@ -27,8 +27,11 @@ export const repeat = (fn, n, ...params) => {
  * Use the repeat function to log the string "Hello, world!" to the console
  *   10 times.
  */
+export function print(){
+    console.log("Hello, world!")
+}
 export const repeatDemo = () => {
-    repeat(console.log(),10,"Hello, world!");
+    repeat(print,10,[]);
 };
 
 
@@ -45,7 +48,7 @@ export const repeatDemo = () => {
  *   product of num1 and num2.
  */
 export const multiplyBy = (num1) => {
-    export function ans (num2){
+    function ans (num2){
         return num1*num2;
     };
 
@@ -57,7 +60,9 @@ export const multiplyBy = (num1) => {
  * Use the multiplyBy function to create and export a function named
  *   "tenTimes" that multiplies a number by 10.
  */
-export const tenTimes = multiplyBy(10);
+export const tenTimes = (num) =>{
+    return multiplyBy(num)(10);
+};
 
 
 /**
@@ -94,7 +99,7 @@ export const tenTimesFifty = () => {
  */
 export const everyEven = (arr, test) => {
         for(let i = 0; i <len(arr);i+=2){
-            if(!test(arr[i]))
+            if(!test(arr[i]) && i%2==0)
             return false;
         }
         return true;
@@ -122,7 +127,7 @@ export const everyEven = (arr, test) => {
  */
 export const someEven = (arr, test) => {
     for(let i = 0; i <len(arr);i+=2){
-        if(test(arr[i]))
+        if(test(arr[i])&& i%2==0)
         return true;
     }
     return false;
@@ -151,15 +156,15 @@ export const someEven = (arr, test) => {
  *       -->  { pass: [1, 5, 31], fail: [90] }
  */
 export const filter = (arr, test) => {
-        let ans = [];
-        let bns = [];
+       let res = {pass: [], fail:[]};
         for(let i = 0; i < arr.length();i++){
             if(test(arr[i]))
-            ans.push(arr[i]);
+            res.pass.push(arr[i]);
             if(!test(arr[i]))
-            bns.push(arr[i]);
+            res.fail.push(arr[i]);
         }
-        return {fail: bns, pass:ans};
+        
+        return res;
 
 };
 
