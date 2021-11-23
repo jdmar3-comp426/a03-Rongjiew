@@ -149,13 +149,13 @@ export function getmakerHybrids(array) {
 };
 export function getAvgMpgByYear(array) {
     const result = {};
-    const year_temp = [];
+    const tempY = [];
     for (let i=0; i<array.length; i++) {
-        make_temp.push(array[i].year);
+        tempY.push(array[i].year);
     }
-    const ye = [... new Set(make_temp)];
-    for (let i=0; i<ye.length; i++) {
-        let year_num = ye[i];
+    const yeay = [... new Set(tempY)];
+    for (let i=0; i<yeay.length; i++) {
+        let year_num = yeay[i];
         const arr_hyb = [];
         const arr_nonhyb = [];
         for (let j=0; j<array.length; j++) {
@@ -167,7 +167,7 @@ export function getAvgMpgByYear(array) {
         }
         let hybrid_avg = allCarStats.avgMpg(arr_hyb);
         let notHybrid_avg = allCarStats.avgMpg(arr_nonhyb);
-        result[ye[i]] = {hybrid: hybrid_avg, notHybrid: notHybrid_avg};
+        result[yeay[i]] = {hybrid: hybrid_avg, notHybrid: notHybrid_avg};
     }
     return result;
 }
