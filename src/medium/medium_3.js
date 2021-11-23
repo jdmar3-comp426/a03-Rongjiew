@@ -88,9 +88,9 @@ export function searchName(car_data, searchTerm) {
         for(let i = 0; i < res1.length;i++){
             for(let j = i+1; j <res1.length;j++){
                 if(offset[i]>offset[j]){
-                    let temp = result[i];
-                    result[i] = result[j];
-                    result[j] = temp;
+                    let temp = res1[i];
+                    res1[i] = res1[j];
+                    res1[j] = temp;
                 }
             }
         }
