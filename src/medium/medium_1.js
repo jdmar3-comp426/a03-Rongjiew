@@ -48,8 +48,8 @@ export function getMedian(array) {
  }
  */
 export function getStatistics(array) {
-    const mean = array =>arr.reduce((a,b) => a+b, 0) / array.length
-
-    return  Math.min(...array), getmedian(array), Math.max(...array), Math.variance(array), mean, array.length ,getSum(array), Math.std(array);
-}
+    const stats = {length: array.length, sum: getSum(array), mean: getSum(array)/array.length, median: getMedian(array),
+        min: Math.min.apply(null, array), max: Math.max.apply(null, array), variance: variance(array), standard_deviation: Math.sqrt(variance(array))};
+   return stats;
+    }
 
